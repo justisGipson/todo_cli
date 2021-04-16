@@ -34,7 +34,6 @@ impl Todo {
             .create(true)
             .read(true)
             .open("db.json")?;
-        let content = String::new();
         match serde_json::from_reader(f) {
             Ok(map) => Ok(Todo { map }),
             Err(e) if e.is_eof() => Ok(Todo {
